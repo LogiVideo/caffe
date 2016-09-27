@@ -90,3 +90,17 @@ caffe_print_configuration_summary()
 
 # ---[ Export configs generation
 caffe_generate_export_configs()
+
+set(CAFFE_PACKAGE_VERSION "0.9.0")
+set(CAFFE_DOWNSTREAM_VERSION "rc3" CACHE STRING "Custom version")
+set(CPACK_GENERATOR "DEB")
+set(CPACK_PACKAGE_VERSION "${CAFFE_PACKAGE_VERSION}-${CAFFE_DOWNSTREAM_VERSION}")
+set(CPACK_DEBIAN_PACKAGE_SHLIBDEPS ON)
+set(CPACK_DEBIAN_PACKAGE_DEPENDS "libatlas3-base libprotobuf8 libsnappy1 libgflags2 libgoogle-glog0 libboost-thread1.55.0 libboost-atomic1.55.0 libboost-chrono1.55.0 libboost-filesystem1.55.0 libboost-system1.55.0")
+set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Logitech Upicto Computer Vision Library")
+set(CPACK_DEBIAN_PACKAGE_MAINTAINER "Logitech Upicto")
+set(CPACK_DEBIAN_PACKAGE_NAME "libcaffe")
+set(CPACK_DEBIAN_PACKAGE_ARCHITECTURE "amd64")
+set(CPACK_PACKAGE_FILE_NAME
+    "${CPACK_DEBIAN_PACKAGE_NAME}-${CPACK_PACKAGE_VERSION}_${CPACK_DEBIAN_PACKAGE_ARCHITECTURE}")
+include(CPack)
